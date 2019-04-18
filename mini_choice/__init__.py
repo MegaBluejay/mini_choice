@@ -1,1 +1,0 @@
-name = 'mini_choice'

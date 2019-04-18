@@ -4,8 +4,8 @@ from itertools import groupby as sequencial_groupby, dropwhile
 
 from toolz.curried import *
 
-from curried_mods import re
-from tabdetect import tabdetect
+from .curried_mods import re
+from .tabdetect import tabdetect
 
 
 def file_loc(filename):

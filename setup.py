@@ -12,10 +12,19 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/MegaBluejay/mini_choice",
-    packages=setuptools.find_packages(),
+    packages=['mini_choice'],
+    entry_points={
+        'console_scripts': ['choice=mini_choice.main:main']
+    },
+    install_requires=[
+        'toolz',
+        'tabulate',
+        'termcolor'
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: Freely Distributable",
         "Operating System :: OS Independent",
     ],
+    zip_safe=0,
 )

@@ -4,8 +4,8 @@ from random import randint
 from termcolor import colored
 from toolz.curried import *
 
-from curried_mods import re
-from lexer import command_detect, parse_file
+from .curried_mods import re
+from .lexer import command_detect, parse_file
 
 
 def padnone(seq):

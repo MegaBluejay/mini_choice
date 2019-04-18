@@ -7,6 +7,6 @@ mods=[re]
 
 for mod in mods:
     for attr in mod.__dict__:
-        obj = getattr(re, attr)
+        obj = getattr(mod, attr)
         if isinstance(obj, types.FunctionType):
-            setattr(re, attr, curry(obj))
+            setattr(mod, attr, curry(obj))
