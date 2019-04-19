@@ -6,6 +6,7 @@ from toolz.curried import *
 
 from .curried_mods import re
 from .lexer import command_detect, parse_file
+from .mio import IO
 
 
 def padnone(seq):
@@ -17,12 +18,12 @@ def domax(f, v):
         nv = f(v)
     return nv
 
-def handle_file(file, all_vars, achs, io, start_label=None, start_is_sub=None):
+def handle_file(file, all_vars, achs, io, scene_loc, start_label=None, start_is_sub=None):
 
     root,\
     labels,\
     hide_reuse\
-        = parse_file(file)
+        = parse_file(file, scene_loc)
 
     temps = set()
     used = set()
@@ -232,7 +233,7 @@ def handle_file(file, all_vars, achs, io, start_label=None, start_is_sub=None):
             goto_scene.extend(command_line[1:])
             return 1
         elif command=='gosub_scene':
-            _,ret[1] = handle_file(command_line[1], all_vars, achs, io, command_line[1], 1)
+            _,ret[1] = handle_file(command_line[1], all_vars, achs, io, scene_loc, command_line[1], 1)
 
         elif command=='ending':
             ret[1]=1
@@ -262,10 +263,10 @@ def handle_file(file, all_vars, achs, io, start_label=None, start_is_sub=None):
         del all_vars[temp]
 
     if goto_scene:
-        _,ret[1] = handle_file(goto_scene[0], all_vars, achs, io, *goto_scene[1:])
+        _,ret[1] = handle_file(goto_scene[0], all_vars, achs, io, scene_loc, *goto_scene[1:])
 
     return tuple(ret)
 
 
 if __name__ == '__main__':
-    handle_file('scene.txt',{}, {}, None)
+    handle_file('scene.txt',{}, {}, IO(None), './scenes')

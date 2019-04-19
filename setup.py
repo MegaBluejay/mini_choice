@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mini_choice",
-    version="0.1",
+    version="0.1.1",
     author="MegaBluejay",
     author_email="dmoiseev2011@gmail.com",
     description="Alternate ChoiceScript interpreter",

@@ -8,9 +8,6 @@ from .curried_mods import re
 from .tabdetect import tabdetect
 
 
-def file_loc(filename):
-    return './scenes/'+filename
-
 re.match = curry(re.match)
 re.sub = curry(re.sub)
 
@@ -25,11 +22,11 @@ def tablen(line, n=2):
 
 command_detect = re.match(r'^\s*[*#](?!line_break)')
 
-def parse_file(file):
+def parse_file(file, scene_loc):
     if isinstance(file, str):
         if not file.endswith('.txt'):
             file+='.txt'
-        file = open(file_loc(file))
+        file = open(scene_loc+'/'+file)
 
     f = list(file)
     file.close()
