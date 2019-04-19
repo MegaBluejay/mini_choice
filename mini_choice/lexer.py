@@ -84,4 +84,4 @@ def parse_file(file, scene_loc):
 
 if __name__ == '__main__':
     from pprint import pprint
-    pprint(parse_file('startup.txt'))
+    pprint(parse_file('startup.txt','./scenes'))

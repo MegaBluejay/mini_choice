@@ -1,5 +1,7 @@
 import argparse as ap
 from glob import iglob
+import signal
+import sys
 
 from toolz.curried import *
 
@@ -17,6 +19,8 @@ def main():
         with open(path, 'r+') as scene:
             if scene.read()[-1]!='\n':
                 scene.write('\n')
+
+    signal.signal(signal.SIGINT, lambda _0,_1: sys.exit(1))
 
     global_vars = {}
     achs = {}
